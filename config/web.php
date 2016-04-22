@@ -16,6 +16,11 @@ $config = [
         ],
         'assetManager' => [
             'bundles' => [
+                'yii\web\JqueryAsset' => [
+                    'js' => [
+                        'jquery.min.js',
+                    ]
+                ],
             ],
         ],
         'user' => [

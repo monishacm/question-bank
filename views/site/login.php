@@ -10,7 +10,7 @@ use yii\helpers\Html;
                     'id' => 'login-form',
                     'options' => ['class' => 'form-horizontal'],
                     'fieldConfig' => [
-                        'template' => "<div>{input}</div><div>{error}</div>",
+                        'template' => "<div>{input}\n{error}</div>",
                     ],
                 ]); ?>
                     <div>
@@ -20,7 +20,7 @@ use yii\helpers\Html;
                         <?= $form->field($model, 'password')->passwordInput(['class' => "form-control", 'placeholder' => "Password"]) ?>
                     </div>
                     <div>
-                        <?= Html::submitButton('Login', ['class' => 'btn btn-default submit', 'name' => 'login-button']) ?>
+                        <?= Html::submitButton('Sign In', ['class' => 'btn btn-primary submit', 'name' => 'login-button']) ?>
                     </div>
                     <div class="clearfix"></div>
                 <?php ActiveForm::end(); ?>
