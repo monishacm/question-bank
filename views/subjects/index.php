@@ -3,17 +3,17 @@
 use yii\widgets\ListView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\ClassesSearch */
+/* @var $searchModel app\models\SubjectSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Classes';
+$this->title = 'Subjects';
 ?>
 <div class="col-md-12 col-sm-12 col-xs-12">
     <div class="x_panel">
         <div class="x_title">
-            <h2>Classes</h2>
+            <h2>Subjects</h2>
             <ul class="nav navbar-right panel_toolbox">
-                <a class="btn btn-primary btn-xs" href="">Add Class</a>
+                <a class="btn btn-primary btn-xs" href="">Add Subject</a>
             </ul>
             <div class="clearfix"></div>
         </div>
@@ -22,6 +22,7 @@ $this->title = 'Classes';
                 <thead>
                 <tr class="headings">
                     <th class="column-title" style="display: table-cell;">Id </th>
+                    <th class="column-title" style="display: table-cell;">Class </th>
                     <th class="column-title" style="display: table-cell;">Title </th>
                     <th class="column-title no-link last" style="display: table-cell;"><span class="nobr">Actions</span></th>
                 </tr>
@@ -29,7 +30,7 @@ $this->title = 'Classes';
                 <tbody>
                 <?= ListView::widget([
                     'dataProvider' => $dataProvider,
-                    'itemView' => '_class'
+                    'itemView' => '_subject'
                 ]); ?>
                 </tbody>
             </table>

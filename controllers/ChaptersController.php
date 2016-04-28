@@ -12,7 +12,7 @@ use yii\filters\VerbFilter;
 /**
  * ChapterController implements the CRUD actions for Chapter model.
  */
-class ChapterController extends Controller
+class ChaptersController extends Controller
 {
     public function behaviors()
     {

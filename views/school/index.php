@@ -1,38 +1,39 @@
 <?php
 
-use yii\helpers\Html;
-use yii\grid\GridView;
+use yii\widgets\ListView;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\SchoolSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Schools';
-$this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="school-index">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-    <p>
-        <?= Html::a('Create School', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
-            'name',
-            'address',
-            'created_date',
-            'deleted',
-
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
-
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Schools</h2>
+            <ul class="nav navbar-right panel_toolbox">
+                <a class="btn btn-primary btn-xs" href="">Add School</a>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <table class="table table-striped responsive-utilities jambo_table bulk_action">
+                <thead>
+                <tr class="headings">
+                    <th class="column-title" style="display: table-cell;">Id </th>
+                    <th class="column-title" style="display: table-cell;">Name </th>
+                    <th class="column-title" style="display: table-cell;">Address </th>
+                    <th class="column-title no-link last" style="display: table-cell;"><span class="nobr">Actions</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <?= ListView::widget([
+                    'dataProvider' => $dataProvider,
+                    'itemView' => '_school'
+                ]); ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
