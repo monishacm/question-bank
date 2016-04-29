@@ -18,7 +18,7 @@ AppIeAsset::register($this);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Questions | <?php echo $this->title; ?></title>
+    <title>Teacher's Aide | <?php echo $this->title; ?></title>
     <?php $this->head(); ?>
 </head>
 <body class="nav-md">
@@ -28,7 +28,7 @@ AppIeAsset::register($this);
             <div class="col-md-3 left_col">
                 <div class="left_col scroll-view">
                     <div class="navbar nav_title" style="border: 0;">
-                        <a href="index.php?r=school-question" class="site_title"><i class="fa fa-paw"></i> <span>Questions!</span></a>
+                        <a href="<?php echo Yii::$app->urlManager->createUrl("admin/ta-questions"); ?>" class="site_title"><i class="fa fa-paw"></i> <span>Teacher's Aide!</span></a>
                     </div>
                     <div class="clearfix"></div>
                     <!-- sidebar menu -->
@@ -39,17 +39,18 @@ AppIeAsset::register($this);
 								<li>
                                     <a><i class="fa fa-question-circle"></i> Questions <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none">
-                                        <li><a href="index.php?r=school-question">Questions</a></li>
-                                        <li><a href="index.php?r=school-question-option">Question Options</a></li>
+                                        <li><a href="<?php echo Yii::$app->urlManager->createUrl("admin/ta-questions"); ?>">TA Questions</a></li>
+                                        <li><a href="<?php echo Yii::$app->urlManager->createUrl("admin/school-questions"); ?>">School's Questions</a></li>
                                     </ul>
                                 </li>
                                 <li>
                                     <a><i class="fa fa-gears"></i> Configuration <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none">
-                                        <li><a href="index.php?r=school">Schools</a></li>
-                                        <li><a href="index.php?r=classes">Classes</a></li>
-                                        <li><a href="index.php?r=subjects">Subjects</a></li>
-                                        <li><a href="index.php?r=chapters">Chapters</a></li>
+                                        <li><a href="<?php echo Yii::$app->urlManager->createUrl("admin/schools"); ?>">Schools</a></li>
+                                        <li><a href="<?php echo Yii::$app->urlManager->createUrl("admin/users"); ?>">Users</a></li>
+                                        <li><a href="<?php echo Yii::$app->urlManager->createUrl("admin/classes"); ?>">Classes</a></li>
+                                        <li><a href="<?php echo Yii::$app->urlManager->createUrl("admin/subjects"); ?>">Subjects</a></li>
+                                        <li><a href="<?php echo Yii::$app->urlManager->createUrl("admin/chapters"); ?>">Chapters</a></li>
                                     </ul>
                                 </li>
                             </ul>

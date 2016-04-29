@@ -55,8 +55,16 @@ class School extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getSchoolQuestions()
+    public function getQuestions()
     {
         return $this->hasMany(SchoolQuestions::className(), ['school_id' => 'id']);
+    }
+
+    function getSubscriptions() {
+        return $this->hasMany(SchoolSubscription::className(), ['school_id' => "id"]);
+    }
+
+    function getStaffs() {
+        return $this->hasMany(User::className(), ['school_id' => "id"]);
     }
 }

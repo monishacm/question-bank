@@ -66,4 +66,12 @@ class SchoolSearch extends School
 
         return $dataProvider;
     }
+
+    static function schoolSubscriptionText($subscription) {
+        if(isset($subscription->types)) {
+            return $subscription->types . " (expiry - " . date("F d, Y", strtotime($subscription->expiry)) . ")";
+        }
+
+        return "N/A";
+    }
 }

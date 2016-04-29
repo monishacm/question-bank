@@ -57,6 +57,6 @@ class Chapter extends \yii\db\ActiveRecord
      */
     public function getSubject()
     {
-        return $this->hasOne(Subjects::className(), ['id' => 'subject_id']);
+        return $this->hasOne(Subject::className(), ['id' => 'subject_id']);
     }
 }
