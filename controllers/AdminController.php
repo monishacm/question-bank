@@ -54,7 +54,7 @@ class AdminController extends Controller
         }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['schools']);
         } else {
             return $this->render('add_school', [
                 'model' => $model,

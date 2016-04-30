@@ -32,8 +32,6 @@ class School extends \yii\db\ActiveRecord
     {
         return [
             [['name', 'address'], 'required'],
-            [['created_date'], 'safe'],
-            [['deleted'], 'string'],
             [['name', 'address'], 'string', 'max' => 512]
         ];
     }
@@ -66,5 +64,17 @@ class School extends \yii\db\ActiveRecord
 
     function getStaffs() {
         return $this->hasMany(User::className(), ['school_id' => "id"]);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function beforeSave($insert)
+    {
+        if($this->isNewRecord) {
+            $this->created_date = date("Y-m-d H:i:s");
+        }
+
+        return parent::beforeSave($insert);
     }
 }
