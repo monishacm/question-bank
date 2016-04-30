@@ -14,7 +14,7 @@ $this->title = 'Subjects';
             <div class="x_title">
                 <h2>Subjects</h2>
                 <ul class="nav navbar-right panel_toolbox">
-                    <a class="btn btn-primary btn-xs" href="">Add Subject</a>
+                    <a class="btn btn-primary btn-xs" href="<?php echo Yii::$app->urlManager->createUrl("admin/add-subject"); ?>">Add Subject</a>
                 </ul>
                 <div class="clearfix"></div>
             </div>

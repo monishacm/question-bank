@@ -10,6 +10,9 @@ use app\models\ChapterSearch;
 use app\models\QuestionSearch;
 use app\models\School;
 use app\models\Question;
+use app\models\Classes;
+use app\models\Subject;
+use app\models\Chapter;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 
@@ -71,6 +74,23 @@ class AdminController extends Controller
             'dataProvider' => $dataProvider,
         ]);
     }
+	
+	public function actionAddClass($id = 0) {
+        if($id > 0) {
+            $model = Classes::findOne($id);
+        }
+        else {
+            $model = new Classes();
+        }
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['classes']);
+        } else {
+            return $this->render('add_class', [
+                'model' => $model,
+            ]);
+        }
+    }
 
     public function actionSubjects() {
         $searchModel = new SubjectSearch();
@@ -81,6 +101,23 @@ class AdminController extends Controller
             'dataProvider' => $dataProvider,
         ]);
     }
+	
+	public function actionAddSubject($id = 0) {
+        if($id > 0) {
+            $model = Subject::findOne($id);
+        }
+        else {
+            $model = new Subject();
+        }
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['subjects']);
+        } else {
+            return $this->render('add_subject', [
+                'model' => $model,
+            ]);
+        }
+    }
 
     public function actionChapters() {
         $searchModel = new ChapterSearch();
@@ -90,6 +127,23 @@ class AdminController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
+    }
+	
+	public function actionAddChapter($id = 0) {
+        if($id > 0) {
+            $model = Chapter::findOne($id);
+        }
+        else {
+            $model = new Chapter();
+        }
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['chapters']);
+        } else {
+            return $this->render('add_chapter', [
+                'model' => $model,
+            ]);
+        }
     }
 
     public function actionTaQuestions() {

@@ -11,12 +11,11 @@ use yii\widgets\ActiveForm;
 <div class="subject-form">
 
     <?php $form = ActiveForm::begin(); ?>
-
-    <?= $form->field($model, 'class_id')->textInput() ?>
+	
+	<?php $list = CHtml::listData(classes::model()->findAll(), 'id', 'title'); ?>
+	<?php echo $form->dropDownList($model, 'class_id', $list, array('empty'=>'(Select a Class)')); ?>
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'deleted')->dropDownList([ 'y' => 'Y', 'n' => 'N', ], ['prompt' => '']) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

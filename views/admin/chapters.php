@@ -14,7 +14,7 @@ $this->title = 'Chapters';
             <div class="x_title">
                 <h2>Chapters</h2>
                 <ul class="nav navbar-right panel_toolbox">
-                    <a class="btn btn-primary btn-xs" href="">Add Chapter</a>
+                    <a class="btn btn-primary btn-xs" href="<?php echo Yii::$app->urlManager->createUrl("admin/add-chapter"); ?>">Add Chapter</a>
                 </ul>
                 <div class="clearfix"></div>
             </div>

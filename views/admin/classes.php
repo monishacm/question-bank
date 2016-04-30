@@ -14,7 +14,7 @@ $this->title = 'Classes';
             <div class="x_title">
                 <h2>Classes</h2>
                 <ul class="nav navbar-right panel_toolbox">
-                    <a class="btn btn-primary btn-xs" href="">Add Class</a>
+                    <a class="btn btn-primary btn-xs" href="<?php echo Yii::$app->urlManager->createUrl("admin/add-class"); ?>">Add Class</a>
                 </ul>
                 <div class="clearfix"></div>
             </div>
