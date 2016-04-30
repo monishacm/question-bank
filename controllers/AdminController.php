@@ -13,6 +13,8 @@ use app\models\Question;
 use app\models\Classes;
 use app\models\Subject;
 use app\models\Chapter;
+use app\models\QuestionOption;
+
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 
@@ -155,15 +157,22 @@ class AdminController extends Controller
             'dataProvider' => $dataProvider,
         ]);
     }
-
-    public function actionAddQuestion() {
-        $model = new Question();
+	
+	public function actionAddQuestion($id = 0) {
+        if($id > 0) {
+            $model = Question::findOne($id);
+        }
+        else {
+            $model = new Question();
+			$questionOption = new QuestionOption();
+        }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['questions']);
         } else {
             return $this->render('add_question', [
                 'model' => $model,
+				'questionOption' => $questionOption
             ]);
         }
     }

@@ -24,7 +24,10 @@ class AppAsset extends AssetBundle
     ];
     public $js = [
         'js/bootstrap.min.js',
-        'js/custom.js'
+		'js/fastclick.js',
+		'js/nprogress.js',
+		'js/jquery.smartWizard.js',
+		'js/custom.js'
     ];
     public $depends = [
         'yii\web\JqueryAsset'
