@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Subject;
+use app\models\User;
 
 /**
- * SubjectSearch represents the model behind the search form about `app\models\Subject`.
+ * SchoolSearch represents the model behind the search form about `app\models\User`.
  */
-class SubjectSearch extends Subject
+class UserSearch extends User
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class SubjectSearch extends Subject
     public function rules()
     {
         return [
-            [['id', 'class_id'], 'integer'],
-            [['title', 'deleted'], 'safe'],
+            [['id'], 'integer'],
+            [['full_name', 'phone_no', 'created_date', 'deleted'], 'safe'],
         ];
     }
 
@@ -39,9 +39,14 @@ class SubjectSearch extends Subject
      *
      * @return ActiveDataProvider
      */
-    public function search($params)
+    public function search($params, $schoolId)
     {
-        $query = Subject::find();
+        if($schoolId) {
+            $query = User::find()->where("school_id = " . $schoolId);
+        }
+        else {
+            $query = User::find();
+        }
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -57,16 +62,13 @@ class SubjectSearch extends Subject
 
         $query->andFilterWhere([
             'id' => $this->id,
-            'class_id' => $this->class_id,
+            'created_date' => $this->created_date,
         ]);
 
-        $query->andFilterWhere(['like', 'title', $this->title])
+        $query->andFilterWhere(['like', 'full_name', $this->full_name])
+            ->andFilterWhere(['like', 'phone_no', $this->phone_no])
             ->andFilterWhere(['like', 'deleted', $this->deleted]);
 
         return $dataProvider;
-    }
-
-    public function getClassesForDropdownList() {
-
     }
 }

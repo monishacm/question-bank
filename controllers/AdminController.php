@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use app\models\User;
+use app\models\UserSearch;
 use Yii;
 use app\models\SchoolSearch;
 use app\models\ClassesSearch;
@@ -60,6 +62,36 @@ class AdminController extends Controller
             return $this->redirect(['schools']);
         } else {
             return $this->render('add_school', [
+                'model' => $model,
+            ]);
+        }
+    }
+
+    public function actionUsers($schoolId = 0) {
+        $searchModel = new UserSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams, $schoolId);
+
+        return $this->render('users', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    public function actionAddUser($id = 0, $schoolId = 0) {
+        if($id > 0) {
+            $model = User::findOne($id);
+        }
+        else {
+            $model = new User();
+            if($schoolId) {
+                $model->school_id = $schoolId;
+            }
+        }
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['users']);
+        } else {
+            return $this->render('add_user', [
                 'model' => $model,
             ]);
         }

@@ -62,7 +62,7 @@ class School extends \yii\db\ActiveRecord
         return $this->hasMany(SchoolSubscription::className(), ['school_id' => "id"]);
     }
 
-    function getStaffs() {
+    function getUsers() {
         return $this->hasMany(User::className(), ['school_id' => "id"]);
     }
 
