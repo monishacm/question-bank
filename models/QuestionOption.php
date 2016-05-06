@@ -30,10 +30,9 @@ class QuestionOption extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['question_id'], 'required'],
-            [['question_id', 'marks'], 'integer'],
+            [['description'], 'required'],
             [['correct_answer', 'deleted'], 'string'],
-            [['description'], 'string', 'max' => 1024]
+            [['description'], 'string', 'max' => 2048]
         ];
     }
 

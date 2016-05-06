@@ -311,16 +311,68 @@ $(function () {
     });
 });
 
-$(document).ready(function() {
-	$('#wizard').smartWizard();
+function aqShowAStepCallback(obj, context){
+    if(context.fromStep == 1 && context.toStep == 2) {
+        if($('#question-qtype').val() == 'objective') {
+            var i = 1;
+            $(".option-answer").each(function() {
+                $(this).html("<b>Option "+i+"</b>");
+                i ++;
+            });
+            $('.hide-subjective').css({"width": "10%", "display": "inline-grid"});
+            $('.hide-objective').css("display", "none");
+        }
+        else {
+            var i = 1;
+            $(".option-answer").each(function() {
+                $(this).html("<b>Question "+i+"</b>");
+                i ++;
+            });
+            $('.hide-subjective').css("display", "none");
+            $('.hide-objective').css({"width": "10%", "display": "inline-grid"});
+        }
+    }
+    else if(context.fromStep == 2 && context.toStep == 3) {
+        var html = "<p>"+
+                   "Chapter: "+$("#question-chapter_id option:selected").text()+ "<br />"+
+                   "Type: "+$("#question-qtype option:selected").text() + ", Marks: "+$('#question-marks').val() + "<br />" +
+                   "</p><p>" + $('#question-description').val() +"</p>";
 
-	$('#wizard_verticle').smartWizard({
-	  transitionEffect: 'slide'
-	});
+        for(var i = 0;i<4;i++) {
+            if($('#questionoption-'+i+'-description').val().length) {
+                html += "<p>";
+                if ($('#question-qtype').val() == 'objective') {
+                    html += "<b>Option " + i + "</b> (Correct Answer: "+($('#questionoption-'+i+'-correct_answer').val() == 'y' ? "Yes" : "No")+")<br />";
+                }
+                else {
+                    html += "<b>Question " + i + "</b> (Marks: "+$('#questionoption-'+i+'-marks').val()+")<br />";
+                }
+                html += $('#questionoption-'+i+'-description').val();
+                html += "</p>";
+            }
+        }
+
+        $('#question-preview').html(html);
+    }
+    return true;
+}
+
+function aqSave(obj, context){
+    $("#w0").submit();
+}
+
+$(document).ready(function() {
+	$('#wizard_add_question').smartWizard({
+        labelFinish: "Save",
+        onShowStep: aqShowAStepCallback,
+        onFinish: aqSave
+    });
 
 	$('.buttonNext').addClass('btn btn-success');
 	$('.buttonPrevious').addClass('btn btn-primary');
 	$('.buttonFinish').addClass('btn btn-default');
+
+    $(".select2_group").select2({});
   });
 
 

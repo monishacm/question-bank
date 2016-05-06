@@ -22,7 +22,6 @@ $this->title = 'TA Questions';
                 <table class="table table-striped responsive-utilities jambo_table bulk_action">
                     <thead>
                     <tr class="headings">
-                        <th class="column-title" style="display: table-cell;">Id </th>
                         <th class="column-title" style="display: table-cell;">Chapter </th>
                         <th class="column-title" style="display: table-cell;">Type </th>
                         <th class="column-title" style="display: table-cell;">Description </th>
@@ -39,5 +38,6 @@ $this->title = 'TA Questions';
                 </table>
             </div>
         </div>
+        <div class="clearfix"></div>
     </div>
 </div>

@@ -36,7 +36,7 @@ class Question extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['chapter_id', 'qtype'], 'required'],
+            [['description', 'marks'], 'required'],
             [['chapter_id', 'added_by', 'marks'], 'integer'],
             [['description', 'qtype', 'status', 'deleted'], 'string'],
             [['created_date'], 'safe']
@@ -50,10 +50,10 @@ class Question extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'chapter_id' => 'Chapter ID',
+            'chapter_id' => 'Chapter',
             'added_by' => 'Added By',
             'description' => 'Description',
-            'qtype' => 'Qtype',
+            'qtype' => 'Type',
             'marks' => 'Marks',
             'status' => 'Status',
             'created_date' => 'Created Date',
@@ -66,7 +66,7 @@ class Question extends \yii\db\ActiveRecord
      */
     public function getChapter()
     {
-        return $this->hasOne(Chapters::className(), ['id' => 'chapter_id']);
+        return $this->hasOne(Chapter::className(), ['id' => 'chapter_id']);
     }
 
     /**
@@ -74,6 +74,10 @@ class Question extends \yii\db\ActiveRecord
      */
     public function getAddedBy()
     {
-        return $this->hasOne(Users::className(), ['id' => 'added_by']);
+        return $this->hasOne(User::className(), ['id' => 'added_by']);
+    }
+
+    public function getOptions() {
+        return $this->hasMany(QuestionOption::className(), ['question_id' => "id"]);
     }
 }

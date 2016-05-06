@@ -196,15 +196,33 @@ class AdminController extends Controller
         }
         else {
             $model = new Question();
-			$questionOption = new QuestionOption();
         }
+        $questionOption = new QuestionOption();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['questions']);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->added_by = 1;
+            if($model->save()) {
+                foreach(Yii::$app->request->post()['QuestionOption'] as $option) {
+                    if(empty($option['description'])) {
+                        continue;
+                    }
+                    if(isset($option['id'])) {
+                        $opModel = QuestionOption::findOne($option['id']);
+                    }
+                    else {
+                        $opModel = new QuestionOption();
+                        $opModel->question_id = $model->id;
+                    }
+                    $opModel->load(array('QuestionOption' => $option));
+                    $opModel->save();
+                }
+
+                return $this->redirect(['ta-questions']);
+            }
         } else {
             return $this->render('add_question', [
                 'model' => $model,
-				'questionOption' => $questionOption
+                'questionOption' => $questionOption
             ]);
         }
     }

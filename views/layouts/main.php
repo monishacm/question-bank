@@ -40,7 +40,7 @@ AppIeAsset::register($this);
                                     <a><i class="fa fa-question-circle"></i> Questions <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none">
                                         <li><a href="<?php echo Yii::$app->urlManager->createUrl("admin/ta-questions"); ?>">TA Questions</a></li>
-                                        <li><a href="<?php echo Yii::$app->urlManager->createUrl("admin/school-questions"); ?>">School's Questions</a></li>
+<!--                                        <li><a href="--><?php //echo Yii::$app->urlManager->createUrl("admin/school-questions"); ?><!--">School's Questions</a></li>-->
                                     </ul>
                                 </li>
                                 <li>

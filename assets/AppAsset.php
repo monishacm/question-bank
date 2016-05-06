@@ -20,14 +20,16 @@ class AppAsset extends AssetBundle
     public $css = [
         'css/bootstrap.min.css',
         'https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css',
-        'css/custom.css'
+        'css/custom.css',
+        'css/select2.min.css'
     ];
     public $js = [
         'js/bootstrap.min.js',
 		'js/fastclick.js',
 		'js/nprogress.js',
 		'js/jquery.smartWizard.js',
-		'js/custom.js'
+		'js/custom.js',
+        'js/select2.full.js'
     ];
     public $depends = [
         'yii\web\JqueryAsset'
