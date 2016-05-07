@@ -19,7 +19,7 @@ $this->title = 'TA Questions';
                 <div class="clearfix"></div>
             </div>
             <div class="x_content">
-                <table class="table table-striped responsive-utilities jambo_table bulk_action">
+                <table id="ta-questions-table" class="table table-striped responsive-utilities jambo_table bulk_action">
                     <thead>
                     <tr class="headings">
                         <th class="column-title" style="display: table-cell;">Chapter </th>

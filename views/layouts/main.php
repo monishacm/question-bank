@@ -46,8 +46,10 @@ AppIeAsset::register($this);
                                 <li>
                                     <a><i class="fa fa-gears"></i> Configuration <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none">
+                                        <?php if(Yii::$app->user->identity->roll == 'admin') {?>
                                         <li><a href="<?php echo Yii::$app->urlManager->createUrl("admin/schools"); ?>">Schools</a></li>
                                         <li><a href="<?php echo Yii::$app->urlManager->createUrl("admin/users"); ?>">Users</a></li>
+                                        <?php }?>
                                         <li><a href="<?php echo Yii::$app->urlManager->createUrl("admin/classes"); ?>">Classes</a></li>
                                         <li><a href="<?php echo Yii::$app->urlManager->createUrl("admin/subjects"); ?>">Subjects</a></li>
                                         <li><a href="<?php echo Yii::$app->urlManager->createUrl("admin/chapters"); ?>">Chapters</a></li>
@@ -72,7 +74,7 @@ AppIeAsset::register($this);
                                     <span class=" fa fa-angle-down"></span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-usermenu pull-right">
-                                    <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                                    <li><a href="<?php echo Yii::$app->urlManager->createUrl("site/logout"); ?>"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                                 </ul>
                             </li>
                         </ul>

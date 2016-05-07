@@ -388,6 +388,9 @@ ALTER TABLE `subjects`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  
+ALTER TABLE `users` ADD COLUMN `access_token` VARCHAR(255);
+ALTER TABLE `users` ADD COLUMN `auth_key` VARCHAR(255);
 --
 -- Constraints for dumped tables
 --

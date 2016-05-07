@@ -373,6 +373,12 @@ $(document).ready(function() {
 	$('.buttonFinish').addClass('btn btn-default');
 
     $(".select2_group").select2({});
+    $('#ta-questions-table').dataTable({
+        searching: false,
+        lengthChange: false,
+        info: false,
+        pageLength: 20
+    });
   });
 
 

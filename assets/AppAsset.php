@@ -29,7 +29,8 @@ class AppAsset extends AssetBundle
 		'js/nprogress.js',
 		'js/jquery.smartWizard.js',
 		'js/custom.js',
-        'js/select2.full.js'
+        'js/select2.full.js',
+        'js/jquery.dataTables.min.js'
     ];
     public $depends = [
         'yii\web\JqueryAsset'
