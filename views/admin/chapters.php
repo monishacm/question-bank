@@ -1,5 +1,6 @@
 <?php
 
+use yii\widgets\LinkPager;
 use yii\widgets\ListView;
 
 /* @var $this yii\web\View */
@@ -32,10 +33,14 @@ $this->title = 'Chapters';
                     <tbody>
                     <?= ListView::widget([
                         'dataProvider' => $dataProvider,
-                        'itemView' => '_chapter'
+                        'itemView' => '_chapter',
+                        'layout' => "{items}{summary}"
                     ]); ?>
                     </tbody>
                 </table>
+                <?php echo LinkPager::widget([
+                    'pagination'=>$dataProvider->pagination,
+                ]); ?>
             </div>
         </div>
     </div>

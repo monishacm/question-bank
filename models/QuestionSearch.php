@@ -6,6 +6,7 @@ use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\Question;
+use yii\data\Pagination;
 
 /**
  * QuestionSearch represents the model behind the search form about `app\models\Question`.
@@ -39,12 +40,16 @@ class QuestionSearch extends Question
      *
      * @return ActiveDataProvider
      */
-    public function search($params)
+    public function search($params, $page = 0)
     {
         $query = Question::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' => [
+                'pageSize' => 50,
+                'page' => $page
+            ],
         ]);
 
         $this->load($params);

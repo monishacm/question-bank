@@ -41,10 +41,10 @@ class AdminController extends Controller
      * Lists all Subject models.
      * @return mixed
      */
-    public function actionSchools() {
-
+    public function actionSchools($page = 0) {
+        if($page > 0) $page --;
         $searchModel = new SchoolSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams, $page);
 
         return $this->render('schools', [
             'searchModel' => $searchModel,
@@ -153,9 +153,10 @@ class AdminController extends Controller
         }
     }
 
-    public function actionChapters() {
+    public function actionChapters($page = 0) {
+        if($page > 0) $page --;
         $searchModel = new ChapterSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams, $page);
 
         return $this->render('chapters', [
             'searchModel' => $searchModel,
@@ -180,9 +181,10 @@ class AdminController extends Controller
         }
     }
 
-    public function actionTaQuestions() {
+    public function actionTaQuestions($page = 0) {
         $searchModel = new QuestionSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        if($page > 0) $page --;
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams, $page);
 
         return $this->render('ta_questions', [
             'searchModel' => $searchModel,

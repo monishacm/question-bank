@@ -374,10 +374,9 @@ $(document).ready(function() {
 
     $(".select2_group").select2({});
     $('#ta-questions-table').dataTable({
-        searching: false,
-        lengthChange: false,
+        paging: false,
         info: false,
-        pageLength: 20
+        searching: false
     });
   });
 

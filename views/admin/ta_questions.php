@@ -1,5 +1,6 @@
 <?php
 
+use yii\widgets\LinkPager;
 use yii\widgets\ListView;
 
 /* @var $this yii\web\View */
@@ -32,10 +33,14 @@ $this->title = 'TA Questions';
                     <tbody>
                     <?= ListView::widget([
                         'dataProvider' => $dataProvider,
-                        'itemView' => '_ta_question'
+                        'itemView' => '_ta_question',
+                        'layout' => "{items}{summary}"
                     ]); ?>
                     </tbody>
                 </table>
+                <?php echo LinkPager::widget([
+                    'pagination'=>$dataProvider->pagination,
+                ]); ?>
             </div>
         </div>
         <div class="clearfix"></div>

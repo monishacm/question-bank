@@ -39,12 +39,16 @@ class ChapterSearch extends Chapter
      *
      * @return ActiveDataProvider
      */
-    public function search($params)
+    public function search($params, $page = 0)
     {
         $query = Chapter::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' => [
+                'pageSize' => 50,
+                'page' => $page
+            ],
         ]);
 
         $this->load($params);
