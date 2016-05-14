@@ -10,7 +10,7 @@ use Yii;
  * @property integer $id
  * @property integer $user_id
  * @property integer $school_id
- * @property string $exam_type
+ * @property string $question_type
  * @property string $notes
  * @property integer $marks
  * @property string $created_date
@@ -35,9 +35,9 @@ class QuestionSet extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'school_id', 'exam_type'], 'required'],
+            [['user_id', 'school_id', 'question_type'], 'required'],
             [['user_id', 'school_id', 'marks'], 'integer'],
-            [['exam_type', 'deleted'], 'string'],
+            [['question_type', 'deleted'], 'string'],
             [['created_date'], 'safe'],
             [['notes'], 'string', 'max' => 1024]
         ];
@@ -52,7 +52,7 @@ class QuestionSet extends \yii\db\ActiveRecord
             'id' => 'ID',
             'user_id' => 'User ID',
             'school_id' => 'School ID',
-            'exam_type' => 'Exam Type',
+            'question_type' => 'Exam Type',
             'notes' => 'Notes',
             'marks' => 'Marks',
             'created_date' => 'Created Date',
@@ -65,7 +65,7 @@ class QuestionSet extends \yii\db\ActiveRecord
      */
     public function getUser()
     {
-        return $this->hasOne(Users::className(), ['id' => 'user_id']);
+        return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
 
     /**
@@ -73,6 +73,6 @@ class QuestionSet extends \yii\db\ActiveRecord
      */
     public function getSchool()
     {
-        return $this->hasOne(Schools::className(), ['id' => 'school_id']);
+        return $this->hasOne(School::className(), ['id' => 'school_id']);
     }
 }

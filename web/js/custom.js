@@ -319,8 +319,8 @@ function aqShowAStepCallback(obj, context){
                 $(this).html("<b>Option "+i+"</b>");
                 i ++;
             });
-            $('.hide-subjective').css({"width": "10%", "display": "inline-grid"});
-            $('.hide-objective').css("display", "none");
+            $('.hide-subjective').removeClass('hide');
+            $('.hide-objective').addClass("hide");
         }
         else {
             var i = 1;
@@ -328,8 +328,8 @@ function aqShowAStepCallback(obj, context){
                 $(this).html("<b>Question "+i+"</b>");
                 i ++;
             });
-            $('.hide-subjective').css("display", "none");
-            $('.hide-objective').css({"width": "10%", "display": "inline-grid"});
+            $('.hide-subjective').addClass("hide");
+            $('.hide-objective').removeClass("hide");
         }
     }
     else if(context.fromStep == 2 && context.toStep == 3) {

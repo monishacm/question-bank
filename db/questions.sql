@@ -444,3 +444,15 @@ ALTER TABLE `subjects`
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+CREATE TABLE `exams` (
+  `id` int(11) NOT NULL,
+  `school_id` INT NOT NULL,
+  `title` varchar(64) NOT NULL,
+  `deleted` enum('y','n') NOT NULL DEFAULT 'n'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+ALTER TABLE `exams`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `exams_index_school_id` (`school_id`);

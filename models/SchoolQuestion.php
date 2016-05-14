@@ -39,7 +39,7 @@ class SchoolQuestion extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['school_id', 'chapter_id', 'qtype'], 'required'],
+            [['chapter_id', 'qtype'], 'required'],
             [['school_id', 'chapter_id', 'added_by', 'marks'], 'integer'],
             [['description', 'qtype', 'status', 'deleted'], 'string'],
             [['created_date'], 'safe']
@@ -68,9 +68,9 @@ class SchoolQuestion extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getSchoolQuestionOptions()
+    public function getOptions()
     {
-        return $this->hasMany(SchoolQuestionOptions::className(), ['school_question_id' => 'id']);
+        return $this->hasMany(SchoolQuestionOption::className(), ['school_question_id' => 'id']);
     }
 
     /**
@@ -78,7 +78,7 @@ class SchoolQuestion extends \yii\db\ActiveRecord
      */
     public function getChapter()
     {
-        return $this->hasOne(Chapters::className(), ['id' => 'chapter_id']);
+        return $this->hasOne(Chapter::className(), ['id' => 'chapter_id']);
     }
 
     /**
@@ -86,7 +86,7 @@ class SchoolQuestion extends \yii\db\ActiveRecord
      */
     public function getSchool()
     {
-        return $this->hasOne(Schools::className(), ['id' => 'school_id']);
+        return $this->hasOne(School::className(), ['id' => 'school_id']);
     }
 
     /**
@@ -94,6 +94,18 @@ class SchoolQuestion extends \yii\db\ActiveRecord
      */
     public function getAddedBy()
     {
-        return $this->hasOne(Users::className(), ['id' => 'added_by']);
+        return $this->hasOne(User::className(), ['id' => 'added_by']);
+    }
+
+    public function beforeSave($insert) {
+        if (parent::beforeSave($insert)) {
+            if ($this->isNewRecord) {
+                $this->added_by = Yii::$app->user->id;
+                $this->school_id = Yii::$app->session['user']['school_id'];
+            }
+            return true;
+        }
+
+        return false;
     }
 }

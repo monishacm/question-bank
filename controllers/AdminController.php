@@ -202,7 +202,6 @@ class AdminController extends Controller
         $questionOption = new QuestionOption();
 
         if ($model->load(Yii::$app->request->post())) {
-            $model->added_by = 1;
             if($model->save()) {
                 foreach(Yii::$app->request->post()['QuestionOption'] as $option) {
                     if(empty($option['description'])) {

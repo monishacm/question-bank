@@ -34,7 +34,7 @@ class SchoolQuestionOption extends \yii\db\ActiveRecord
         return [
             [['school_question_id'], 'required'],
             [['school_question_id', 'marks'], 'integer'],
-            [['correct_answer', 'deleted'], 'string'],
+            [['correct_answer'], 'string'],
             [['description'], 'string', 'max' => 1024]
         ];
     }

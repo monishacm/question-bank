@@ -30,7 +30,9 @@ class SiteController extends Controller
 
     public function actionLogin() {
         if (!\Yii::$app->user->isGuest) {
-            if(Yii::$app->user->identity->roll == 'teacher') {}
+            if(Yii::$app->user->identity->roll == 'teacher') {
+                return $this->redirect(["user/index"]);
+            }
             else {
                 return $this->redirect(["admin/ta-questions"]);
             }
@@ -65,6 +67,7 @@ class SiteController extends Controller
 
     public function actionLogout() {
         Yii::$app->user->logout();
+        unset(Yii::$app->session['user']);
         return $this->redirect(["site/login"]);
     }
 }

@@ -78,6 +78,10 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
         return $this->id;
     }
 
+    function getName() {
+        return $this->full_name;
+    }
+
     /**
      * @inheritdoc
      */

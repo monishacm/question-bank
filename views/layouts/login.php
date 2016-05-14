@@ -20,7 +20,7 @@ AppIeAsset::register($this);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Questions: Login</title>
+    <title>Teacher's Aide: Login</title>
     <?php $this->head(); ?>
 </head>
 <body style="background:#F7F7F7;">

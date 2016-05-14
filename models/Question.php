@@ -80,4 +80,15 @@ class Question extends \yii\db\ActiveRecord
     public function getOptions() {
         return $this->hasMany(QuestionOption::className(), ['question_id' => "id"]);
     }
+
+    public function beforeSave($insert) {
+        if (parent::beforeSave($insert)) {
+            if ($this->isNewRecord) {
+                $this->added_by = Yii::$app->user->id;
+            }
+            return true;
+        }
+
+        return false;
+    }
 }
